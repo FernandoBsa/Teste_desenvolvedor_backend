@@ -23,6 +23,7 @@ namespace InsideStore.Infra.EntityConfiguration
             builder.Property(o => o.ClosedAt);
 
             builder.Property(o => o.Status)
+                .HasConversion<string>()
                 .IsRequired();
 
             builder.Property(o => o.Total)

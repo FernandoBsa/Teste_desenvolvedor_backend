@@ -18,7 +18,18 @@ namespace InsideStore.Domain.Entities
 
         private OrderItem()
         {
-            
+        }
+
+        public OrderItem(Product product, int quantity)
+        {
+            ProductId = product.Id;
+            UnitPrice = product.Price;
+            UpdateQuantity(quantity);
+        }
+
+        public void UpdateQuantity(int quantity)
+        {
+            Quantity = quantity;
         }
     }
 }

@@ -1,6 +1,4 @@
-using InsideStore.Infra.Context;
-using Microsoft.EntityFrameworkCore;
-using System;
+using InsideStore.Api.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,9 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<InsideStoreContext>(options =>
-    options.UseNpgsql(connectionString));
+builder.Services.AddApiConfiguration(builder.Configuration);
 
 var app = builder.Build();
 

@@ -1,11 +1,6 @@
 ﻿using InsideStore.Domain.Enum;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace InsideStore.Application.Result
+namespace InsideStore.Application.Results
 {
     public class ValidationError : Error
     {

@@ -1,11 +1,6 @@
 ﻿using InsideStore.Domain.Enum;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace InsideStore.Application.Result
+namespace InsideStore.Application.Results
 {
     public class Error
     {
@@ -50,6 +45,6 @@ namespace InsideStore.Application.Result
             new(code, description, ErrorType.Forbidden);
 
         public static Error Unknown() =>
-            new("server.error", "Erro desconhecido");
+            new("Server.Error", "Erro desconhecido");
     }
 }

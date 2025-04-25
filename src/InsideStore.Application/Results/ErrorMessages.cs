@@ -1,4 +1,4 @@
-﻿namespace InsideStore.Application.Result
+﻿namespace InsideStore.Application.Results
 {
     public class ErrorMessages
     {

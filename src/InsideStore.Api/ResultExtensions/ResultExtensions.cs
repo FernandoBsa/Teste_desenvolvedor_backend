@@ -1,4 +1,4 @@
-﻿using InsideStore.Application.Result;
+﻿using InsideStore.Application.Results;
 using InsideStore.Domain.Enum;
 
 namespace InsideStore.Api.ResultExtensions
