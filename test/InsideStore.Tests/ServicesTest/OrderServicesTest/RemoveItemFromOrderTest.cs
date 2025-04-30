@@ -40,7 +40,7 @@ public class RemoveItemFromOrderTest
     public async Task RemoveItemFromOrderAsync_ShouldReturnError_WhenOrderIsClosed()
     {
         var order = new Order();
-        order.Close(); // Marca o pedido como fechado
+        order.Close(); 
 
         _orderRepositoryMock
             .Setup(r => r.GetOrderAndItemsAsync(It.IsAny<Guid>()))
@@ -57,13 +57,13 @@ public class RemoveItemFromOrderTest
     {
         var order = new Order();
         var product = new Product("Produto A", "Descrição", 100, 10);
-        order.AddItem(product, 5);  // Adiciona 5 unidades do produto
+        order.AddItem(product, 5);  
 
         _orderRepositoryMock
             .Setup(r => r.GetOrderAndItemsAsync(It.IsAny<Guid>()))
             .ReturnsAsync(order);
 
-        var result = await _orderServices.RemoveItemFromOrderAsync(Guid.NewGuid(), product.Id, 10);  // Tenta remover 10, o que é maior que a quantidade
+        var result = await _orderServices.RemoveItemFromOrderAsync(Guid.NewGuid(), product.Id, 10);  
 
         result.IsSuccess.Should().BeFalse();
         result.Error.Code.Should().Be("Order.InvalidQuantity");
@@ -74,7 +74,7 @@ public class RemoveItemFromOrderTest
     {
         var product = new Product("Produto A", "Descrição", 100, 10);
         var order = new Order();
-        order.AddItem(product, 5); // Adiciona 5 unidades do produto
+        order.AddItem(product, 5); 
 
         _orderRepositoryMock
             .Setup(r => r.GetOrderAndItemsAsync(It.IsAny<Guid>()))
@@ -84,10 +84,10 @@ public class RemoveItemFromOrderTest
             .Setup(r => r.SaveChangesAsync(It.IsAny<CancellationToken>()))
             .ReturnsAsync(true);
 
-        var result = await _orderServices.RemoveItemFromOrderAsync(Guid.NewGuid(), product.Id, 2); // Remove 2 unidades
+        var result = await _orderServices.RemoveItemFromOrderAsync(Guid.NewGuid(), product.Id, 2); 
 
         result.IsSuccess.Should().BeTrue();
-        order.Items.Should().ContainSingle(i => i.ProductId == product.Id && i.Quantity == 3); // Deve sobrar 3 unidades
+        order.Items.Should().ContainSingle(i => i.ProductId == product.Id && i.Quantity == 3); 
         _orderRepositoryMock.Verify(r => r.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);
     }
 }

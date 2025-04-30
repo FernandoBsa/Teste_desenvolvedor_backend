@@ -40,7 +40,7 @@ public class CloseOrderTest
     public async Task CloseOrderAsync_ShouldReturnError_WhenOrderIsAlreadyClosed()
     {
         var order = new Order();
-        order.Close(); // Simula pedido já fechado
+        order.Close();
 
         _orderRepositoryMock.Setup(r => r.GetOrderAndItemsAsync(It.IsAny<Guid>()))
             .ReturnsAsync(order);
