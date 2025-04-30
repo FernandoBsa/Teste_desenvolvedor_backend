@@ -13,8 +13,8 @@ namespace InsideStore.Domain.Entities
         public int Quantity { get; private set; }
         public decimal UnitPrice { get; private set; }
         public decimal SubTotal => UnitPrice * Quantity;
-        public Order Order { get; set; }
-        public Product Product { get; set; }
+        public Order Order { get; private set; }
+        public Product Product { get; private set; }
 
         private OrderItem()
         {
@@ -23,6 +23,7 @@ namespace InsideStore.Domain.Entities
         public OrderItem(Product product, int quantity)
         {
             ProductId = product.Id;
+            Product = product;
             UnitPrice = product.Price;
             UpdateQuantity(quantity);
         }

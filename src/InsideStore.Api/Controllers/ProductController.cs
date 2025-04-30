@@ -38,5 +38,36 @@ public class ProductController : ControllerBase
         return Results.Ok(result.Value);
     }
     
+    [HttpGet("{id:guid}")]
+    public async Task<IResult> GetProductById(Guid id)
+    {
+        var result = await _productService.GetByIdAsync(id);
+        
+        if (result.IsFailure)
+            return result.ToProblem();
+
+        return Results.Ok(result.Value);
+    }
     
+    [HttpPut]
+    public async Task<IResult> UpdateProduct([FromBody] UpdateProductRequest product)
+    {
+        var result = await _productService.UpdateProductAsync(product);
+        
+        if (result.IsFailure)
+            return result.ToProblem();
+
+        return Results.NoContent();
+    }
+    
+    [HttpDelete("{id:guid}")]
+    public async Task<IResult> DeleteProduct(Guid id)
+    {
+        var result = await _productService.DeleteProductAsync(id);
+        
+        if (result.IsFailure)
+            return result.ToProblem();
+
+        return Results.NoContent();
+    }
 }

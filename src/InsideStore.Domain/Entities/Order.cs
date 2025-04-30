@@ -7,7 +7,7 @@ namespace InsideStore.Domain.Entities
         public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
         public DateTime? ClosedAt { get; private set; }
         public OrderStatus Status { get; private set; } = OrderStatus.Open;
-        public decimal Total { get; set; }
+        public decimal Total { get; private set; }
         public ICollection<OrderItem> Items { get; private set; } = new List<OrderItem>();
 
         public Order()
@@ -46,6 +46,11 @@ namespace InsideStore.Domain.Entities
 
         public void Close()
         {
+            foreach (var item in Items)
+            {
+                item.Product.DecreaseStock(item.Quantity);
+            }
+
             Status = OrderStatus.Closed;
             ClosedAt = DateTime.UtcNow;
         }

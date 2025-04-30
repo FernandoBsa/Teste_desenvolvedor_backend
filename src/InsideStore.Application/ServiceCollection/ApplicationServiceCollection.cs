@@ -8,7 +8,7 @@ public static class ApplicationServiceCollection
 {
     public static IServiceCollection AddApplicationServicesCollection(this IServiceCollection services)
     {
-        services.AddScoped<IOrderServices, OrderServiceses>();
+        services.AddScoped<IOrderServices, OrderServices>();
         services.AddScoped<IProductServices, ProductServices>();
         
         return services;

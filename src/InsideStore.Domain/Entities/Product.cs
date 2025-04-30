@@ -9,9 +9,8 @@
 
         private Product()
         {
-           
         }
-        
+
         public Product(string name, string description, decimal price, int stock)
         {
             Name = name;
@@ -19,10 +18,18 @@
             Price = price;
             Stock = stock;
         }
-        
+
         public void DecreaseStock(int quantity)
         {
             Stock -= quantity;
+        }
+
+        public void UpdateProduct(string? name, string? description, decimal? price, int? stock)
+        {
+            Name = name ?? Name;
+            Description = description ?? Description;
+            Price = price ?? Price;
+            Stock = stock ?? Stock;
         }
     }
 }

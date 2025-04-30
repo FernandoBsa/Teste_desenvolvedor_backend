@@ -7,5 +7,8 @@ namespace InsideStore.Application.Interfaces;
 public interface IProductServices
 {
     Task<Result> CreateProductAsync(CreateProductRequest productRequest);
-    Task<Result<IEnumerable<AllProductResponse>>> GetAllProductsAsync();
+    Task<Result<IEnumerable<ProductResponse>>> GetAllProductsAsync();
+    Task<Result<ProductResponse>> GetByIdAsync(Guid id);
+    Task<Result> UpdateProductAsync(UpdateProductRequest productRequest);
+    Task<Result> DeleteProductAsync(Guid id);
 }
