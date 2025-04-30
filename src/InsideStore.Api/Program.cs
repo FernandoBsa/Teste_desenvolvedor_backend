@@ -11,6 +11,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddApiConfiguration(builder.Configuration);
 
+builder.Services.AddProblemDetails();
+
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -20,11 +24,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseExceptionHandler();
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
-app.UseExceptionHandler();
 
 app.MapControllers();
 

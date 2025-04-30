@@ -14,8 +14,6 @@ public static class ApiConfig
         
         services.AddAutoMapper(typeof(AutoMapperProfile));
         
-        services.AddExceptionHandler<GlobalExceptionHandler>();
-        
         services.AddDependencyInjection();
         
         return services;

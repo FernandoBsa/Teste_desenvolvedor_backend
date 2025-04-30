@@ -50,7 +50,7 @@ public class OrderController : ControllerBase
         return Results.NoContent();
     }
     
-    [HttpPost("{orderId}/items")]
+    [HttpPost("{orderId}/add_items")]
     public async Task<IResult> AddItem(Guid orderId, [FromBody] AddItemRequest request)
     {
         var result = await _orderServices.AddItemToOrderAsync(orderId, request.ProductId, request.Quantity);
@@ -61,7 +61,7 @@ public class OrderController : ControllerBase
         return Results.Ok();
     }
 
-    [HttpPut("{orderId}/items/{productId}")]
+    [HttpPut("{orderId}/remove_items/{productId}")]
     public async Task<IResult> RemoveItem(Guid orderId, Guid productId, [FromQuery] int quantity = 1)
     {
         var result = await _orderServices.RemoveItemFromOrderAsync(orderId, productId, quantity);
