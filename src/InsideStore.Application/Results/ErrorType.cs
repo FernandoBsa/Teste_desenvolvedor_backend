@@ -1,4 +1,4 @@
-﻿namespace InsideStore.Domain.Enum
+﻿namespace InsideStore.Application.Results
 {
     public enum ErrorType
     {

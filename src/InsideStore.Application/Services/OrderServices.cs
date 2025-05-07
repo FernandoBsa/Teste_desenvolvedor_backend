@@ -71,7 +71,6 @@ public class OrderServices : IOrderServices
         order.Close();
         
         await _orderRepository.SaveChangesAsync();
-        //await _productRepository.SaveChangesAsync();
 
         return Result.Success();
     }
